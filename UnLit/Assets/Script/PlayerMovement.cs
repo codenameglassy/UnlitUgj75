@@ -87,12 +87,14 @@ public class PlayerMovement : MonoBehaviour
         canMove = false;
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
         anim.SetTrigger("attack");
-
+        AudioManagerCS.instance.Play("spin2");
         yield return new WaitForSeconds(0.1f);
+        //int index = Random.Range(1, 3);
+     
         currentSpeed = spinSpeed;
         anim.SetBool("spin", true);
         checkAttack = true;
-        //Instantiate(bombPrefab, projectileSpawnPos.position, transform.rotation);
+        AudioManagerCS.instance.Play("spin1");
         yield return new WaitForSeconds(0.5f);
         canMove = true;
 

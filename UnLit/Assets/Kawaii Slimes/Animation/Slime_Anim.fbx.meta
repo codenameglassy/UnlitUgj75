@@ -27,6 +27,9 @@ ModelImporter:
   - first:
       74: 192038563593961148
     second: Rig|Slime_Walk_02
+  - first:
+      74: 3128085128359617477
+    second: Rig|jump
   externalObjects:
   - first:
       type: UnityEngine:Material

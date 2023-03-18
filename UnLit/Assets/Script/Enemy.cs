@@ -134,6 +134,7 @@ public class Enemy : MonoBehaviour
             yield break;
         }
         isDeathState = true;
+        AudioManagerCS.instance.Play("splash");
         Instantiate(hitVfx, checkPos.position, Quaternion.identity);
         Destroy(gameObject);
 

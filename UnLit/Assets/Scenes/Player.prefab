@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &955937435
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 955937436}
+  m_Layer: 9
+  m_Name: CheckPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &955937436
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 955937435}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8149442436815388609}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8149442435214200930
 GameObject:
   m_ObjectHideFlags: 0
@@ -9,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8149442435214200957}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FeetPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +71,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8149442436226429327}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ProjectileSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +105,7 @@ GameObject:
   - component: {fileID: 8149442436815388610}
   - component: {fileID: 8149442436815388611}
   - component: {fileID: 8149442436815388637}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -96,6 +127,7 @@ Transform:
   - {fileID: 8149442435214200957}
   - {fileID: 8543922001216341607}
   - {fileID: 8149442436226429327}
+  - {fileID: 955937436}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -142,14 +174,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 8149442436182161417}
-  moveSpeed: 500
-  jumpForce: 20
-  rotationFactorPerFrame: 1
+  moveSpeed: 400
+  spinSpeed: 550
+  jumpForce: 40
+  rotationFactorPerFrame: 0.2
   checkGroundPos: {fileID: 8149442435214200957}
   checkGroundRadius: 0.2
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
+  checkPos: {fileID: 955937436}
+  checkRadius: 1
+  whatIsEnemy:
+    serializedVersion: 2
+    m_Bits: 256
   bombPrefab: {fileID: 1669313161727087123, guid: 6d2f7ac083da6774da3e892fffb5d9d4, type: 3}
   projectileSpawnPos: {fileID: 8149442436226429327}
 --- !u!1001 &8149442435300745612
@@ -215,9 +253,61 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7403002964094449856, guid: 5d1cd35570dc600419da732416cfb76c, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: -2464052661545380425, guid: 5d1cd35570dc600419da732416cfb76c, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: -1017372850509616109, guid: 5d1cd35570dc600419da732416cfb76c, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: -945367093958665821, guid: 5d1cd35570dc600419da732416cfb76c, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 911088564753622055, guid: 5d1cd35570dc600419da732416cfb76c, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5d1cd35570dc600419da732416cfb76c, type: 3}
       propertyPath: m_Name
       value: Sparrow_LOD0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5d1cd35570dc600419da732416cfb76c, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 945614497576433354, guid: 5d1cd35570dc600419da732416cfb76c, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1373804507276978751, guid: 5d1cd35570dc600419da732416cfb76c, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2668605608433959078, guid: 5d1cd35570dc600419da732416cfb76c, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932635810120784719, guid: 5d1cd35570dc600419da732416cfb76c, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3743993344710040121, guid: 5d1cd35570dc600419da732416cfb76c, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3896644541231073943, guid: 5d1cd35570dc600419da732416cfb76c, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6736787618702837447, guid: 5d1cd35570dc600419da732416cfb76c, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d1cd35570dc600419da732416cfb76c, type: 3}
