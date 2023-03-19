@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,6 +12,11 @@ public class GameManager : MonoBehaviour
     public PlayerMovement player;
 
     public CanvasGroup fadeCanvas;
+    public RectTransform dialoguePanel;
+    public TextMeshProUGUI chatText;
+    public Vector2 showPos, hidePos;
+
+    public int keyCount; 
     private void Awake()
     {
         instance = this;
@@ -28,6 +34,7 @@ public class GameManager : MonoBehaviour
     void Init()
     {
         fadeCanvas.alpha = 1;
+        StartCoroutine(Tutorial());
     }
 
     public void ResetPlayerPos()
@@ -43,6 +50,28 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
         AudioManagerCS.instance.Play("dive");
         playerTransform.DOMove(startPos.position, 3f);
+    }
+
+    IEnumerator Tutorial()
+    {
+
+        yield return new WaitForSeconds(.5f);
+        chatText.text = "WASD to move, Space bar to Roll/Attack";
+        dialoguePanel.DOAnchorPos(showPos, 1f);
+        yield return new WaitForSeconds(5f);
+        dialoguePanel.DOAnchorPos(hidePos, 1f);
+
+    }
+
+    public void AddKey()
+    {
+        keyCount++;
+
+        if(keyCount >= 6)
+        {
+            return;
+        }
+
     }
  
 }

@@ -15,7 +15,7 @@ public class Coin : MonoBehaviour
 
     private void Start()
     {
-        Invoke("EnableCollect", .5f);
+        Invoke("EnableCollect", .1f);
         StartCoroutine(Enum_Spread());
      
     }

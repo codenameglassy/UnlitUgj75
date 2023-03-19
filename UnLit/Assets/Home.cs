@@ -43,7 +43,7 @@ public class Home : MonoBehaviour
 
         chatText.text = "Untill... ";
         dialougePanel.DOAnchorPos(showPos, 2f);
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(4f);
         dialougePanel.DOAnchorPos(hidePos, 1f);
         chatText.text = "...";
         yield return new WaitForSeconds(1f);
