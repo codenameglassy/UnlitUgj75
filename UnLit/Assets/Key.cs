@@ -21,7 +21,7 @@ public class Key : MonoBehaviour
 
     IEnumerator Collect()
     {
-        transform.DOScale(new Vector3(0.1f, 0.1f, 0.1f), .5f).SetEase(Ease.OutBounce);
+        transform.DOScale(new Vector3(0f, 0f, 0f), .5f).SetEase(Ease.OutBounce);
         AudioManagerCS.instance.Play("key");
         yield return new WaitForSeconds(.5f);
         GameManager.instance.AddKey();
