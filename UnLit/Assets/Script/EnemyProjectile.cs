@@ -27,8 +27,17 @@ public class EnemyProjectile : MonoBehaviour
 
         if (checkPlayer)
         {
+            if (GameManager.instance.player.isAttacking)
+            {
+                Instantiate(destroVfx, transform.position, Quaternion.identity);
+                AudioManagerCS.instance.Play("deflect");
+                FindObjectOfType<PlayerHealth>().TakeDamage(5f);
+                Destroy(gameObject);
+                return;
+            }
             Instantiate(destroVfx, transform.position, Quaternion.identity);
             Instantiate(bloodVfx, checkPos.position, Quaternion.identity);
+            AudioManagerCS.instance.Play("hit");
             FindObjectOfType<PlayerHealth>().TakeDamage(10f);
             Destroy(gameObject);
         }

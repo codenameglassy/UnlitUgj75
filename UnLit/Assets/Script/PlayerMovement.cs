@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("References")]
     public Animator anim;
+    public Transform bubble;
     Rigidbody rb;
     Vector3 currentMovement;
 
@@ -54,14 +55,14 @@ public class PlayerMovement : MonoBehaviour
         {
             /* Debug.Log("Jumping");
              currentMovement.y = jumpForce;*/
-            anim.SetTrigger("throwBomb");
+           // anim.SetTrigger("throwBomb");
             //StartCoroutine(Attack());
             StartCoroutine(SpinAttack());
            
         }
     }
 
-    bool isAttacking = false;
+    [HideInInspector] public bool isAttacking = false;
     IEnumerator Attack()
     {
         if (isAttacking)
@@ -87,7 +88,8 @@ public class PlayerMovement : MonoBehaviour
         canMove = false;
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
         anim.SetTrigger("attack");
-        AudioManagerCS.instance.Play("spin2");
+
+       // AudioManagerCS.instance.Play("spin2");
         yield return new WaitForSeconds(0.1f);
         //int index = Random.Range(1, 3);
      
@@ -95,17 +97,24 @@ public class PlayerMovement : MonoBehaviour
         anim.SetBool("spin", true);
         checkAttack = true;
         AudioManagerCS.instance.Play("spin1");
-        yield return new WaitForSeconds(0.5f);
+      
+        yield return new WaitForSeconds(0.4f);
+        bubble.gameObject.SetActive(true);
+        bubble.DOScale(new Vector3(1f, 1f, 1f), .5f);
+
         canMove = true;
-
-
-
+        
         yield return new WaitForSeconds(3f);
+
+        bubble.DOScale(new Vector3(.1f, .1f, .1f), 1f);
+       
+        yield return new WaitForSeconds(.5f);
+        
         anim.SetBool("spin", false);
         currentSpeed = moveSpeed;
         isAttacking = false;
         checkAttack = false;
-
+        bubble.gameObject.SetActive(false);
 
     }
 

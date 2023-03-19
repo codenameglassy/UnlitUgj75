@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
+using DG.Tweening;
 
 public class Enemy : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class Enemy : MonoBehaviour
     public Seeker seeker;
     public AIDestinationSetter destinationSetter;
     public GameObject hitVfx;
-
+    public GameObject coinPrefab;
 
     [Header("States")]
     public EnemyState enemyState;
@@ -36,11 +37,19 @@ public class Enemy : MonoBehaviour
 
     private void Awake()
     {
-       
+       // transform.DOScale(new Vector3(.1f, .1f, .1f), .1f);
+    }
+
+    IEnumerator Scale()
+    {
+     
+        yield return new WaitForSeconds(.2f);
+        transform.DOScale(new Vector3(1, 1, 1), 1f);
     }
     // Start is called before the first frame update
     void Start()
     {
+        StartCoroutine(Scale());
         HandleState();   
     }
 
@@ -135,6 +144,11 @@ public class Enemy : MonoBehaviour
         }
         isDeathState = true;
         AudioManagerCS.instance.Play("splash");
+
+        Instantiate(coinPrefab, checkPos.position, Quaternion.identity);
+        Instantiate(coinPrefab, checkPos.position, Quaternion.identity);
+        Instantiate(coinPrefab, checkPos.position, Quaternion.identity);
+      
         Instantiate(hitVfx, checkPos.position, Quaternion.identity);
         Destroy(gameObject);
 
